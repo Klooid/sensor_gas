@@ -14,7 +14,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Nuevo documento 1">
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/logo.png"
+   inkscape:export-xdpi="299.9285"
+   inkscape:export-ydpi="299.9285">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,8 +28,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="338.8445"
-     inkscape:cy="542.88634"
+     inkscape:cx="374.06006"
+     inkscape:cy="569.85328"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -50,11 +53,13 @@
   <g
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     sodipodi:insensitive="true">
+     id="layer1">
     <g
        id="g3538"
-       transform="matrix(6.0676549,0,0,6.2527932,73.623197,417.65898)">
+       transform="matrix(6.0676549,0,0,6.2527932,73.623197,417.65898)"
+       inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/path4099.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          id="g3498">
         <path
@@ -97,11 +102,13 @@
   <g
      inkscape:groupmode="layer"
      id="layer4"
-     inkscape:label="Glass"
-     sodipodi:insensitive="true">
+     inkscape:label="Glass">
     <g
        id="g3695"
-       transform="matrix(0.38916505,0,0,0.37525065,133.54168,486.32731)">
+       transform="matrix(0.38916505,0,0,0.37525065,133.54168,486.32731)"
+       inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/path4099.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          id="g3656">
         <path
@@ -144,21 +151,29 @@
        style="fill:#ffffff"
        d="m 222.47317,559.95664 -7.31234,-8.01857 1.15158,-0.96873 c 0.63337,-0.53279 1.73144,-1.60591 2.44016,-2.3847 1.18843,-1.30593 1.32743,-1.3883 1.78844,-1.0599 0.92358,0.65793 16.24237,14.21483 16.22325,14.35734 -0.0224,0.16677 -6.50046,5.91638 -6.78408,6.0212 -0.10707,0.0396 -3.48523,-3.53642 -7.50701,-7.94664 z"
        id="path4095"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/path4099.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        style="fill:#ffffff"
        d="m 232.74209,571.21647 c -1.1095,-1.27562 -1.27284,-1.58236 -0.98101,-1.8423 0.19257,-0.17153 1.48654,-1.32246 2.8755,-2.55762 1.38896,-1.23516 2.83378,-2.52382 3.21072,-2.86368 l 0.68534,-0.61793 1.41887,1.21218 1.41887,1.21218 -2.23048,2.25392 c -1.22676,1.23965 -2.86862,2.81186 -3.64858,3.4938 l -1.4181,1.23989 -1.33113,-1.53044 0,0 z"
        id="path4097"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/path4099.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="Steam"
-     sodipodi:insensitive="true">
+     inkscape:label="Steam">
     <g
        id="g3141"
-       transform="matrix(0.66836743,0,0,0.76190473,129.96934,480.32905)">
+       transform="matrix(0.66836743,0,0,0.76190473,129.96934,480.32905)"
+       inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/path4099.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          id="path3103"
          d="M 25,46 H 10.845 C 4.865,46 0,41.135 0,35.154 0,31 2.705,26.688 6.433,24.901 L 7,24.63 V 24 c 0,-0.127 0.008,-0.256 0.015,-0.386 l 0.009,-0.16 -0.012,-0.21 C 7.006,23.163 7,23.082 7,23 c 0,-3.859 3.141,-7 7,-7 0.309,0 0.614,0.027 0.917,0.067 0.078,0.01 0.156,0.023 0.233,0.036 0.267,0.044 0.53,0.102 0.789,0.177 0.035,0.01 0.071,0.017 0.106,0.027 0.285,0.087 0.563,0.197 0.835,0.321 0.071,0.032 0.14,0.067 0.21,0.101 0.24,0.119 0.475,0.249 0.702,0.396 C 19.719,18.373 21,20.538 21,23 c 0,0.553 0.447,1 1,1 0.553,0 1,-0.447 1,-1 0,-2.754 -1.246,-5.219 -3.2,-6.871 C 22.667,12.379 27.388,10 32.085,10 c 7.745,0 14.177,6.135 14.848,13.888 -1.022,-0.072 -2.552,-0.109 -4.083,0.124 -0.546,0.083 -0.921,0.593 -0.838,1.139 0.075,0.495 0.501,0.85 0.987,0.85 0.05,0 0.101,-0.004 0.151,-0.012 2.227,-0.337 4.548,-0.021 4.684,-0.002 C 52.49,26.872 56,31.161 56,35.972 56,41.501 51.501,46 45.972,46 H 33 25 z"
@@ -202,7 +217,10 @@
      style="display:inline">
     <g
        id="g3363"
-       transform="matrix(0.90874478,0,0,0.84224143,164.88481,609.0152)">
+       transform="matrix(0.90874478,0,0,0.84224143,164.88481,609.0152)"
+       inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/path4099.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          id="g3291">
         <path
@@ -275,16 +293,14 @@
       <g
          id="g3355" />
     </g>
-    <path
-       style="fill:#ffffff"
-       d="m 206.56113,354.83033 c -8.07103,-4.79088 -16.84352,-12.94936 -19.28107,-17.93153 l -1.82617,-3.73256 0.18896,-22.47153 0.18895,-22.47152 6.06847,-0.50261 c 8.36858,-0.69311 14.95941,-2.93593 18.94997,-6.44856 l 3.22896,-2.84225 1.34653,1.71183 c 1.67029,2.12343 7.21575,5.17255 11.46146,6.30197 1.75904,0.46793 5.93761,1.05977 9.28572,1.3152 l 6.08746,0.46442 0,22.85714 c 0,22.43468 -0.0301,22.91359 -1.63094,25.91105 -2.11669,3.96347 -9.36421,11.27842 -14.79763,14.93532 -4.38217,2.94936 -11.25538,6.65363 -12.3457,6.65363 -0.33411,0 -3.45035,-1.6875 -6.92497,-3.75 z m 7.98267,-18.85635 c 3.92134,-8.56532 12.68816,-21.31022 21.19512,-30.81271 3.93535,-4.39589 3.99575,-4.52757 2.86717,-6.25 -0.63408,-0.96773 -1.46735,-1.75951 -1.8517,-1.75951 -1.59667,0 -14.97318,10.8526 -21.34975,17.32143 -3.77573,3.83036 -7.1938,6.96429 -7.59572,6.96429 -0.40192,0 -1.11078,-0.45789 -1.57524,-1.01753 -0.46446,-0.55964 -2.60806,-2.37813 -4.76356,-4.04108 l -3.91908,-3.02355 -2.8239,2.75747 c -1.55315,1.51661 -2.82391,3.01586 -2.82391,3.33167 0,1.02219 18.85242,20.56444 19.83852,20.56444 0.52514,0 1.78606,-1.81571 2.80205,-4.03492 z"
-       id="path3716"
-       inkscape:connector-curvature="0" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot3921"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="translate(0,17.714286)"><flowRegion
+       transform="translate(0,17.714286)"
+       inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/path4099.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
          id="flowRegion3923"><rect
            id="rect3925"
            width="468.75854"
@@ -337,7 +353,10 @@
        xml:space="preserve"
        id="flowRoot3978"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="translate(-2.3879612,8.3263252)"><flowRegion
+       transform="translate(-2.3879612,8.3263252)"
+       inkscape:export-filename="/home/lleon95/GitHub/sensor_gas/LogoBulding/path4099.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
          id="flowRegion3980"><rect
            id="rect3982"
            width="333.57141"
@@ -349,6 +368,8 @@
        style="fill:#ffffff"
        d="m 176.41453,631.02908 c -4.90869,-3.00438 -5.34817,-3.91702 -5.34817,-11.10622 l 0,-5.28187 1.39052,-0.002 c 1.91591,-0.003 4.59068,-0.75604 5.94183,-1.67254 0.98996,-0.67149 1.1932,-0.69101 1.65572,-0.15911 0.61858,0.71134 4.33077,1.83393 6.06448,1.83393 l 1.20591,0 0,5.77068 c 0,6.60341 -0.2988,7.42092 -3.51194,9.60858 -1.61118,1.09696 -4.33772,2.59498 -4.70301,2.58392 -0.0705,-0.002 -1.28341,-0.71092 -2.69534,-1.57509 z m 3.97752,-5.37302 c 0.77572,-1.34779 2.58801,-3.65199 4.02732,-5.12045 2.27728,-2.32341 2.53698,-2.74621 2.00101,-3.25774 -0.53598,-0.51153 -0.89207,-0.40813 -2.74375,0.79667 -1.17031,0.76147 -2.97454,2.21851 -4.00939,3.23786 l -1.88155,1.85338 -1.36774,-0.99565 c -1.58196,-1.15159 -1.84589,-1.18387 -2.98115,-0.36461 -0.80443,0.58051 -0.71806,0.72088 2.12779,3.45792 1.63145,1.56907 3.0677,2.85067 3.19167,2.84801 0.12397,-0.003 0.86007,-1.10759 1.63579,-2.45539 z"
        id="path4099"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>
