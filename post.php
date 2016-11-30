@@ -15,9 +15,9 @@
 	    exit();
 	}
 
-	if(isset($_GET['data']))
+	if(isset($_GET['data']) && isset($_GET['code']) && isset($_GET['status']))
 	{
-		$sql = "INSERT INTO example (data) VALUES (".$_GET['data'].")";
+		$sql = "INSERT INTO example (data, code, s_status) VALUES (".$_GET['data'].",".$_GET['code'].",".$_GET['status'].")";
 
 				if (mysqli_query($server_link,$sql)) {
 				    echo "DONE";
