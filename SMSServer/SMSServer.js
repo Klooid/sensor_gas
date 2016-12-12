@@ -84,6 +84,7 @@ function SIM900_SENDSMS(number, messag)
 	var sendSMS = setInterval(function(){
 		if(counter == 0)
 		{
+			// Add number
 			console.log("Sending SMS to "+number);
 			console.log("Message: "+ messag+"..");
 			SIM900.write('AT+CMGS="'+number+'"\r\n');
@@ -91,17 +92,20 @@ function SIM900_SENDSMS(number, messag)
 		}
 		else if(counter == 1)
 		{
+			// Wait for console
 			if(incomingSerial.indexOf(">") != 0)
 				counter = 2;
 		}
 		else if(counter == 2)
 		{
-			SIM900.write("Dear "+AdminName+". "+messag+".\r\n");
+			// Write message
+			SIM900.write("Dear "+AdminName+". "+messag+". This message was sent by a SMS Server, please don't reply.\r\n");
 			SIM900.write(Submit);
 				counter = 3;
 		}
 		else if(counter == 3)
 		{
+			//
 			if(incomingSerial.indexOf("OK") != 0)
 			{
 				console.log("SMS Sent...");
