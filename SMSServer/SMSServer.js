@@ -1,3 +1,17 @@
+// -------------------------------------------------------------------
+// Klooid Innovations Costa Rica - 2016
+// Project: FFMS - SafetyApp
+// Code Name: SMS Server
+// Date: Dec-12-2016
+// Programmer: Luis Leon Vega
+// Description: This code allows you to make a SMS server using SIM900
+//				and a Orange Pi. However, you can use this with other
+//				SIMxxx devices and a RaspberryPi	
+// Licence: This code is under GPL licence. You can use	it but you have
+//			have to invite me a Coca Cola :) Please, don't forget give me
+//			an acknowledgement.		
+// -------------------------------------------------------------------
+
 /** IMPORTANT PARAMETERS **/
 var AdminNumber = "+50684251012"; 
 var AdminName = "Luis Leon";
