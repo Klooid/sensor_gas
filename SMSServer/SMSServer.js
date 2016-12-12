@@ -140,7 +140,7 @@ function SIM900_SENDSMS(number, messag, fname)
 		else if(counter == 1)
 		{
 			// Write message
-			SIM900.write("Sr(a) "+fname+". \r\n");
+			SIM900.write("Sr(a) "+fname+".\r\n");
 			counter = 2;
 		}
 		else if(counter == 2)
@@ -148,7 +148,7 @@ function SIM900_SENDSMS(number, messag, fname)
 			// Wait for console
 			if(incomingSerial.indexOf(">") != -1)
 			{
-				SIM900.write("\r\n"+ messag + ". \r\n At: SafetyApp");
+				SIM900.write("\r\n"+ messag + ".\r\nAt: SafetyApp");
 				counter = 3;
 			}	
 		}
