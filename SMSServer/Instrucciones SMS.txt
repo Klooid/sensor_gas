@@ -1,0 +1,23 @@
+If there is pin: AT+CPIN="0000"
+
+>> AT+CMGF=1\r\n
+Response must be "OK"
+>> AT+CSMP?\r\n
+Response has contain "+CSMP: 17,167,0,0"
+If NOT:
+	AT+CSMP=17,167,0,0\r\n
+	Response must be "OK"
+>> AT+CMGS="+50684251012"\r\n // Instead +50684251012, put the contact phone
+Response must be ">"
+>>Send the message ending with (char)26
+Response must be OK
+
+That's all :D
+
+
+AT+CMGS="+50684725308"
+AT+CSMP=17,167,0,0
+
+If console contains: +CMT: (Is an incomming message)
+http://www.smssolutions.net/tutorials/gsm/sendsmsat/
+https://github.com/nebrius/raspi
