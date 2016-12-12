@@ -1,0 +1,10 @@
+Info based on: https://forum.armbian.com/index.php/topic/1898-kernel-logs-on-uart-console/
+This is for Orange Pi One
+
+First, modify /boot/boot.cmd
+  Quit console=entry and put something like this: setenv bootargs "console=tty0 root=/dev/mmcblk0p1 rootwait rootfstype=ext4 cgroup_enable=memory swapaccount=1 panic=10 consoleblank=0 enforcing=0 loglevel=6"
+Then, compile boot.src
+ # sudo mkimage -C none -A arm -T script -d /boot/boot.cmd /boot/boot.src
+After that, disable login:
+ # sudo systemctl disable serial-getty@ttyS0
+Finally, reboot.
