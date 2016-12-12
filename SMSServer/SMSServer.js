@@ -39,37 +39,36 @@ function SIM900_READ(data)
 // Serialport initialization procedure
 function SIM900_INIT()
 {
-	// Verifying if SIM900 has SMS capability
-	SIM900.write("AT+CMGF=1\r\n");
-	//while(true)
-	//	if(incomingSerial.indexOf("OK") != -1)
-	//		break;
-	// Verifying if SIM900 has SMS settings right
-	SIM900.write("AT+CSMP?\r\n");
-
-	var waiting = true;
-	var settingsOK = false;
-
-	setTimeout(function(){ // Retarder
-		waiting = false;
-	},1000);
-
-	//while(waiting)
-	//	if(incomingSerial.indexOf("+CSMP: 17,167,0,0") != -1)
-	//		settingsOK = true;
-	// Correcting settings
-	if(!settingsOK)
-		SIM900.write("AT+CSMP=17,167,0,0\r\n");
-	//while(true)
-	//	if(incomingSerial.indexOf("OK") != -1)
-	//		break;
-	// Sending message to Admin
-	console.log("Sending a message to admin..");
-	SIM900.write("AT+CMGS="+AdminNumber+"\r\n");
-	//while(true)
-	//	if(incomingSerial.indexOf(">") != -1)
-	//		break;
-	SIM900.write("Dear "+AdminName+". The SMS Server has been initialized correctly."+Submit);
-    console.log("SIM900's been started..");
+	// Cycle
+	var counter = 0;
+	var initSIM = setInterval(function(){
+		if(counter == 0)
+		{
+			console.log("Setting up SIM900..");
+			SIM900.write("AT+CMGF=1\r\n");
+		}
+		else if(counter == 1)
+			SIM900.write("AT+CSMP?\r\n");
+		else if(counter == 2)
+			SIM900.write("AT+CSMP=17,167,0,0\r\n");
+		else if(counter == 3)
+		{
+			console.log("Sending a message to admin..");
+			SIM900.write("AT+CMGS="+AdminNumber+"\r\n");
+		}
+		else if(counter == 4)
+		{
+			SIM900.write("Dear "+AdminName+". The SMS Server has been initialized correctly."+Submit);
+		}
+		else if(counter == 5)
+		{
+			console.log("SIM900's been started..");
+			clearInterval(initSIM);
+		}
+		counter++;
+	},500);
+	
+	
+    
 }
 
