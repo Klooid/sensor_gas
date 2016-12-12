@@ -140,7 +140,7 @@ function SIM900_SENDSMS(number, messag, fname)
 		else if(counter == 1)
 		{
 			// Write message
-			SIM900.write("Sr(a) "+fname+".");
+			SIM900.write("Sr(a) "+fname+". \r\n");
 			counter = 2;
 		}
 		else if(counter == 2)
