@@ -40,7 +40,7 @@ var FFMSDB = mysql.createConnection({
 });
 // Serialport opening Routine
 SIM900.on('open', function() {
-  console.log("SIM900 Port Open");
+  console.log("# SIM900 Port Open");
   SERVER_INIT();
 });
 /**-------------------------**/
@@ -63,9 +63,11 @@ function SERVER_INIT()
 	  console.log('# Connected to DB successfully');
 	});
 	// Start MySQL Routine
-	if(!DBError) startAlerting();
+	setTimeout(function(){
+		if(!DBError) startAlerting();
+	}, 30000);
 	// Debug
-	setTimeout(function(){SIM900_SENDSMS(AdminNumber,"Test message successful", AdminName);},30000);
+	//setTimeout(function(){SIM900_SENDSMS(AdminNumber,"Test message successful", AdminName);},30000);
 }
 /**-------------------------**/
 /**   SMS Server Routines   **/
@@ -73,7 +75,7 @@ function SERVER_INIT()
 // Serialport reading routine
 var echo = false;
 SIM900.on('data', function(data){
-	if(echo)
+	if(true)
 		console.log('Data: ' + data);
 	SIM900_READ(data);
 });
@@ -122,7 +124,7 @@ function SIM900_INIT()
 }
 
 // SIM900 sending messages
-function SIM900_SENDSMS(number, messag, name)
+function SIM900_SENDSMS(number, messag, fname)
 {
 	echo = false;
 	var counter = 0;
@@ -137,23 +139,39 @@ function SIM900_SENDSMS(number, messag, name)
 		}
 		else if(counter == 1)
 		{
-			// Wait for console
-			if(incomingSerial.indexOf(">") != 0)
-				counter = 2;
+			// Write message
+			SIM900.write("Sr(a) "+fname+".");
+			counter = 2;
 		}
 		else if(counter == 2)
 		{
-			// Write message
-			SIM900.write("Estimado(a) "+name+". "+messag+". Este mensaje fue enviado por un servidor SMS, por favor, no responder.\r\n");
-			SIM900.write(Submit);
+			// Wait for console
+			if(incomingSerial.indexOf(">") != -1)
+			{
+				SIM900.write("\r\n"+ messag + ". \r\n At: SafetyApp");
 				counter = 3;
+			}	
 		}
 		else if(counter == 3)
 		{
-			//
-			if(incomingSerial.indexOf("OK") != 0)
+			// Wait for console
+			if(incomingSerial.indexOf(">") != -1)
+			{
+				SIM900.write(Submit);
+				counter = 4;
+			}	
+		}
+		else if(counter == 4)
+		{
+			// 
+			if(incomingSerial.indexOf("OK") != -1)
 			{
 				console.log("SMS Sent...");
+				clearInterval(sendSMS);
+			}
+			if(incomingSerial.indexOf("ERROR") != -1)
+			{
+				console.log("SMS Fail...");
 				clearInterval(sendSMS);
 			}
 		}
@@ -162,14 +180,17 @@ function SIM900_SENDSMS(number, messag, name)
 /**-------------------------**/
 /**   SQL Client Routines   **/
 /**-------------------------**/
+var sqlRest;
 // Read SQL Function
-function READ_SQL(SQLConnection, Table, Criteria, Order, OrderCriteria)
+function READ_SQL(SQLConnection, Table, Criteria, Order, OrderCriteria, callback)
 {
-	connection.query('SELECT * FROM '+ mysql.escape(Table) + ' WHERE ' + mysql.escape(Criteria) + 'ORDER BY ' + mysql.escape(OrderCriteria) + ' ' + mysql.escape(Order), function(err, rows, fields) {
+	var sql = "SELECT * FROM "+ Table + " WHERE " + Criteria + " ORDER BY " + OrderCriteria + " " + Order;
+	FFMSDB.query(sql, function(err, rows, fields) {
   	if (err) throw err;
-  		return rows;
+	callback(rows);
 	});
 }
+
 /**-------------------------**/
 /**    Alerting Routines    **/
 /**-------------------------**/
@@ -184,63 +205,84 @@ function startAlerting()
 function CheckAllDevices() // Main Function for ReadAllDevices
 {
 	// Put here all systems those have to be monitored
-	ReadAllDevices_FFMS();
+	CheckAllDevices_FFMS();
 }
 // SafetyApp Routine
 function CheckAllDevices_FFMS()
 {
 	// Acquire all alerts
 	var serials_idAlerted = [];
-	var devicesParams = READ_SQL(FFMSDB, 'controls', 'status = 1', 'ASC', 'serial_id');
-	if(devicesParams.lenght != 0)
-		// Register alerts
-		for(var i = 0; i < devicesParams.lenght; i++)
+	var devicesParams = null;
+	READ_SQL(FFMSDB,  "controls", "status = 1", "ASC", "serial_id", function(items){
+		devicesParams = items;	
+		if(devicesParams != undefined)
+			// Register alerts
+		
+				for(var i in devicesParams)
+				{
+					var id = devicesParams[i].serial_id;
+					// Put in view
+					serials_idAlerted.push(id);
+					// Verify if alert wasn't declared
+					if(AlertsFFMS.indexOf(id) == -1)
+						// New alert
+						SendAlert_FFMS(id, devicesParams[i].location, devicesParams[i].owner_user, devicesParams[i].type);
+				}
+		
+		// Verify if there is an alert attempted
+		for(var i in AlertsFFMS)
 		{
-			var id = devicesParams[i].serial_id;
-			// Put in view
-			serials_idAlerted.push(id);
-			// Verify if alert wasn't declared
-			if(AlertsFFMS.indexOf(id) != -1)
-				// New alert
-				SendAlert_FFMS(id, devicesParams.location, devicesParams.owner_user, devicesParams.type);
+			// Quit elements attempted
+			if(serials_idAlerted.indexOf(AlertsFFMS[i]) == -1)
+			{
+				console.log("Device "+ AlertsFFMS[i] + " will be removed..");
+				AlertsFFMS.splice(i,1);
+			}
 		}
-	// Verify if there is an alert attempted
-	for(var i = 0; i < AlertsFFMS.lenght; i++)
-	{
-		// Quit elements attempted
-		if(serials_idAlerted.indexOf(AlertsFFMS[i]) == -1)
-			AlertsFFMS.splice(i,1);
-	}
 	
+	});
 }
 // FFMS Sending alerts
 function SendAlert_FFMS(id, location, owner, type)
 {
 	// Push into AlertsFFMS
+	console.log("Reported: " + id);
 	AlertsFFMS.push(id);
 	// Get information about owner
-	var user = READ_SQL(FFMSDB, 'users', 'user_id = ' + owner, 'ASC', 'user_id');
-	if(user.lenght != 0)
-	{
-		var fullname = user[0].fullname;
-		var phone = user[0].phone;
-	}
-	else
-	{
-		var fullname = "undefined";
-		var phone = "undefined";
-	}
-	// Get information about type
-	var typeTable = READ_SQL(FFMSDB, 'type_controls', 'id = ' + type, 'ASC', 'id');
-	if(typeTable.lenght != 0)
-		var descriptionType = typeTable[0].description;
-	else
-		var descriptionType = "undefined";
-	// Send message
-	var msg = 'Uno de los '+descriptionType + ', ha alertado de una emergencia en '+location+'. Se pide tomar en cuenta acatar este mensaje de forma inmediata para evitar una emergencia mayor.';
-	if(phone == "undefined")
-		console.log("Error: There is no number to message");
-	else
-		SIM900_SENDSMS(phone, msg, fullname);
+	var fullname;
+	var phone;
+	READ_SQL(FFMSDB, 'users', 'user_id = ' + owner, 'ASC', 'user_id', function(user){
+		if(user.lenght != 0)
+		{
+			fullname = user[0].fullname;
+			phone = user[0].phone;
+		}
+		else
+		{
+			fullname = "undefined";
+			phone = "undefined";
+		}
+
+		// Get information about type
+		var descriptionType;
+		READ_SQL(FFMSDB, 'type_controls', 'id = ' + type, 'ASC', 'id', function(typeTable){
+			if(typeTable.lenght != 0)
+				descriptionType = typeTable[0].short_description;
+			else
+				descriptionType = "undefined";
+			
+			// Send message
+			if(!(phone == undefined || descriptionType == undefined || fullname == undefined))
+			{
+				var msg = 'Los '+descriptionType + ' han emitido alerta en '+location+'.';
+				if(phone == "undefined" || phone == undefined)
+					console.log("Error: There is no number to message");
+				else
+					SIM900_SENDSMS(phone, msg, fullname);
+			}
+		});
+	
+	});
+
 }
 
