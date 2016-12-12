@@ -22,7 +22,7 @@ function SERVER_INIT()
 	console.log("Starting SIM900..");
 	SIM900_INIT();
 	// Debug
-	setTimeout(function(){SIM900_SENDSMS(AdminNumber,"Test message successful");},30000);
+	setTimeout(function(){SIM900_SENDSMS(AdminNumber,"Test message successful", AdminName);},30000);
 }
 
 // Serialport reading routine
@@ -77,7 +77,7 @@ function SIM900_INIT()
 }
 
 // SIM900 sending messages
-function SIM900_SENDSMS(number, messag)
+function SIM900_SENDSMS(number, messag, name)
 {
 	echo = false;
 	var counter = 0;
@@ -99,7 +99,7 @@ function SIM900_SENDSMS(number, messag)
 		else if(counter == 2)
 		{
 			// Write message
-			SIM900.write("Dear "+AdminName+". "+messag+". This message was sent by a SMS Server, please don't reply.\r\n");
+			SIM900.write("Dear "+name+". "+messag+". This message was sent by a SMS Server, please don't reply.\r\n");
 			SIM900.write(Submit);
 				counter = 3;
 		}
