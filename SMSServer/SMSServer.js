@@ -1,7 +1,7 @@
 /** IMPORTANT PARAMETERS **/
 var AdminNumber = "+50684251012"; 
 var AdminName = "Luis Leon";
-var Submit = String.fromCharCode(34);
+var Submit = String.fromCharCode(26);
 
 /** NodeJS Libraries**/
 // Serialport - For connecting to SIM900 Module
@@ -54,19 +54,20 @@ function SIM900_INIT()
 		else if(counter == 3)
 		{
 			console.log("Sending a message to admin..");
-			SIM900.write("AT+CMGS="+AdminNumber+"\r\n");
+			SIM900.write('AT+CMGS="'+AdminNumber+'"\r\n');
 		}
 		else if(counter == 4)
 		{
-			SIM900.write("Dear "+AdminName+". The SMS Server has been initialized correctly."+Submit);
+			SIM900.write("Dear "+AdminName+". The SMS Server has been started correctly.\r\n");
 		}
 		else if(counter == 5)
 		{
+			SIM900.write(Submit);
 			console.log("SIM900's been started..");
 			clearInterval(initSIM);
 		}
 		counter++;
-	},500);
+	},3000);
 	
 	
     
