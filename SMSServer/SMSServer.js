@@ -10,7 +10,7 @@ var SIM900 = new SerialPort('/dev/ttyS0', {
 	baudRate: 9600
 });
 
-
+// Serialport opening Routine
 SIM900.on('open', function() {
   console.log("SIM900 Port Open");
   SERVER_INIT();
@@ -21,11 +21,15 @@ function SERVER_INIT()
 {
 	console.log("Starting SIM900..");
 	SIM900_INIT();
+	// Debug
+	setTimeout(SIM900_SENDSMS(AdminNumber,"Test message successful"),30000);
 }
 
 // Serialport reading routine
+var echo = false;
 SIM900.on('data', function(data){
-	console.log('Data: ' + data);
+	if(echo)
+		console.log('Data: ' + data);
 	SIM900_READ(data);
 });
 
@@ -40,6 +44,7 @@ function SIM900_READ(data)
 function SIM900_INIT()
 {
 	// Cycle
+	echo = false; // Debug = true;
 	var counter = 0;
 	var initSIM = setInterval(function(){
 		if(counter == 0)
@@ -59,17 +64,50 @@ function SIM900_INIT()
 		else if(counter == 4)
 		{
 			SIM900.write("Dear "+AdminName+". The SMS Server has been started correctly.\r\n");
+			SIM900.write(Submit);
 		}
 		else if(counter == 5)
 		{
-			SIM900.write(Submit);
+			echo = true;
 			console.log("SIM900's been started..");
 			clearInterval(initSIM);
 		}
 		counter++;
 	},3000);
-	
-	
     
 }
 
+// SIM900 sending messages
+function SIM900_SENDSMS(number, message)
+{
+	echo = false;
+	var counter = 0;
+	var sendSMS = setInterval(function(){
+		if(counter == 0)
+		{
+			console.log("Sending SMS to "+number);
+			console.log("Message: "+ mensaje+"..");
+			SIM900.write('AT+CMGS="'+number+'"\r\n');
+			counter = 1;
+		}
+		else if(counter == 1)
+		{
+			if(incomingSerial.indexOf(">") != 0)
+				counter = 2;
+		}
+		else if(counter == 2)
+		{
+			SIM900.write("Dear "+AdminName+". "+message+".\r\n");
+			SIM900.write(Submit);
+				counter = 3;
+		}
+		else if(counter == 3)
+		{
+			if(incomingSerial.indexOf("OK") != 0)
+			{
+				console.log("SMS Sent...");
+				clearInterval(sendSMS);
+			}
+		}
+	},3000);
+}
