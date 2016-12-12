@@ -14,7 +14,7 @@ const int Threshold = 3000; // Adjusted by Pot
 
 // For sending info through WiFi
 #define gpio 13
-#define host_name "192.168.11.103"
+#define host_name "92.222.73.56"
 #define location1 "GET /ffms/post.php?data="
 #define location2 "&code="
 #define location3 "&status="
