@@ -8,7 +8,7 @@
 //				and a Orange Pi. However, you can use this with other
 //				SIMxxx devices and a RaspberryPi	
 // Licence: This code is under GPL licence. You can use	it but you have
-//			have to invite me a Coca Cola :) Please, don't forget give me
+//			to invite me a Coca Cola :) Please, don't forget give me
 //			an acknowledgement.		
 // -------------------------------------------------------------------
 
