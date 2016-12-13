@@ -18,7 +18,7 @@
 var AdminNumber = "+50684251012"; 
 var AdminName = "Luis Leon";
 var Submit = String.fromCharCode(26);
-var MySQLServerFFMS = '178.32.221.218';
+var MySQLServerFFMS = '';
 var MySQLUserFFMS = '';
 var MySQLPasswordFFMS = '';
 var MySQLDBFFMS = '';
