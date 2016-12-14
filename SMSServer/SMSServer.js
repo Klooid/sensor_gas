@@ -148,7 +148,7 @@ function SIM900_SENDSMS(number, messag, fname)
 			// Wait for console
 			if(incomingSerial.indexOf(">") != -1)
 			{
-				SIM900.write("\r\n"+ messag + ".\r\nAt: SafetyApp");
+				SIM900.write("\r\n"+ messag + ".\r\nAt: SafetyApp\r\n");
 				counter = 3;
 			}	
 		}
@@ -184,7 +184,7 @@ var sqlRest;
 // Read SQL Function
 function READ_SQL(SQLConnection, Table, Criteria, Order, OrderCriteria, callback)
 {
-	var sql = "SELECT * FROM "+ Table + " WHERE " + Criteria + " ORDER BY " + OrderCriteria + " " + Order;
+	var sql = "SELECT * FROM "+ mysql.escape(Table) + " WHERE " + mysql.escape(Criteria) + " ORDER BY " + mysql.escape(OrderCriteria) + " " + mysql.escape(Order);
 	FFMSDB.query(sql, function(err, rows, fields) {
   	if (err) throw err;
 	callback(rows);
