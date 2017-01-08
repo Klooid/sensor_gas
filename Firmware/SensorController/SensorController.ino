@@ -10,7 +10,7 @@ const int numberOfSensors = 3;
 
 // Parameters for sensors
 const long PortCodes[] = {100001,100002,100003}; // Sensor codes // Device = 10000X
-const int Threshold = 3000; // Adjusted by Pot
+const int Threshold = 4127; // Adjusted by fabric - 2000ppm
 
 // For sending info through WiFi
 #define gpio 13
