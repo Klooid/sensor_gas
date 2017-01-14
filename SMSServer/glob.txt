@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/2727167/getting-all-filenames-in-a-directory-with-node-js
