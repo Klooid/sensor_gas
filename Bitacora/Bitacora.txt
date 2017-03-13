@@ -1,0 +1,14 @@
+; ############################################################
+;  Proyecto Sensores de Gas FFMS
+;  Bitácora de proyecto
+;  Encargado: Luis Leon V
+;  Inicio: 2017
+; ############################################################
+
+; ------------------------------------------------------------
+; Fecha: 12-Mar-2017
+
+Se da apertura a esta bitácora a partir de este punto. Se hizo reunión con Christopher para detallar el diseño y mejorarlo.
+Se debe mejorar la API para hacer listados de dispositivos por usuario y para poder invocar mayores detalles.
+Además, se debe incorporar al Frontend la posibilidad de enlistar varios dispositivos y eliminar la característica estática
+que posee.

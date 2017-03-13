@@ -8,3 +8,5 @@ Then, compile boot.src
 After that, disable login:
  # sudo systemctl disable serial-getty@ttyS0
 Finally, reboot.
+
+https://forum.armbian.com/index.php/topic/1524-orange-pi-one-how-to-enable-uart/
